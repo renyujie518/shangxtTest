@@ -1,0 +1,5 @@
+2021-01-25 21:07:16 util.Dbutil.<clinit>(Dbutil.java:35) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-01-25 21:07:16 util.Dbutil.getConnection(Dbutil.java:52) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@6c80d78a
+2021-01-25 21:07:16 util.Dbutil.closeAll(Dbutil.java:66) Dbutil.java DEBUG 关闭结果集成功
+2021-01-25 21:07:16 util.Dbutil.closeAll(Dbutil.java:75) Dbutil.java DEBUG 关闭Statement成功
+2021-01-25 21:07:16 util.Dbutil.closeAll(Dbutil.java:84) Dbutil.java DEBUG 关闭数据库成功
