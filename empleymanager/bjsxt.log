@@ -3,3 +3,68 @@
 2021-01-25 21:07:16 util.Dbutil.closeAll(Dbutil.java:66) Dbutil.java DEBUG 关闭结果集成功
 2021-01-25 21:07:16 util.Dbutil.closeAll(Dbutil.java:75) Dbutil.java DEBUG 关闭Statement成功
 2021-01-25 21:07:16 util.Dbutil.closeAll(Dbutil.java:84) Dbutil.java DEBUG 关闭数据库成功
+2021-01-26 11:58:45 util.Dbutil.<clinit>(Dbutil.java:35) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-01-26 11:58:46 util.Dbutil.getConnection(Dbutil.java:52) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@6c80d78a
+2021-01-26 11:58:46 util.Dbutil.closeAll(Dbutil.java:66) Dbutil.java DEBUG 关闭结果集成功
+2021-01-26 11:58:46 util.Dbutil.closeAll(Dbutil.java:75) Dbutil.java DEBUG 关闭Statement成功
+2021-01-26 11:58:46 util.Dbutil.closeAll(Dbutil.java:84) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:31:53 util.Dbutil.<clinit>(Dbutil.java:39) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-02-02 16:31:53 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@6c80d78a
+2021-02-02 16:31:53 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:31:53 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:31:53 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:39:12 util.Dbutil.<clinit>(Dbutil.java:39) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-02-02 16:39:12 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@1bb5a082
+2021-02-02 16:39:12 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:39:12 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:39:12 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:40:08 util.Dbutil.<clinit>(Dbutil.java:39) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-02-02 16:40:15 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@175b9425
+2021-02-02 16:40:15 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:40:15 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:40:15 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:40:35 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@74455848
+2021-02-02 16:40:35 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:40:35 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:40:35 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:43:06 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@1eb5174b
+2021-02-02 16:43:06 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:43:06 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:43:06 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:43:28 util.Dbutil.<clinit>(Dbutil.java:39) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-02-02 16:43:29 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@6c80d78a
+2021-02-02 16:43:29 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:43:29 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:43:29 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:44:48 util.Dbutil.<clinit>(Dbutil.java:39) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-02-02 16:44:49 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@6c80d78a
+2021-02-02 16:44:49 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:44:49 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:44:49 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:46:50 util.Dbutil.<clinit>(Dbutil.java:39) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-02-02 16:46:51 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@6c80d78a
+2021-02-02 16:46:51 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:46:51 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:46:51 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:47:10 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@4c402120
+2021-02-02 16:47:10 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:47:10 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:47:10 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:47:15 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@682b2fa
+2021-02-02 16:47:15 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:47:15 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:47:15 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:49:38 util.Dbutil.<clinit>(Dbutil.java:39) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-02-02 16:49:39 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@6c80d78a
+2021-02-02 16:49:39 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:49:39 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:49:39 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:55:19 util.Dbutil.<clinit>(Dbutil.java:39) Dbutil.java INFO 正确读取jdbc.propertities{password=12345678, dirver=com.mysql.cj.jdbc.Driver, user=root, url=jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+2021-02-02 16:55:19 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@6c80d78a
+2021-02-02 16:55:19 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:55:19 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:55:19 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功
+2021-02-02 16:55:24 util.Dbutil.getConnection(Dbutil.java:56) Dbutil.java INFO 获取数据库连接成功com.mysql.cj.jdbc.ConnectionImpl@2d1ef81a
+2021-02-02 16:55:24 util.Dbutil.closeAll(Dbutil.java:70) Dbutil.java DEBUG 关闭结果集成功
+2021-02-02 16:55:24 util.Dbutil.closeAll(Dbutil.java:79) Dbutil.java DEBUG 关闭Statement成功
+2021-02-02 16:55:24 util.Dbutil.closeAll(Dbutil.java:88) Dbutil.java DEBUG 关闭数据库成功

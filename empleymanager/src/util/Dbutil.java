@@ -5,7 +5,11 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -15,7 +19,7 @@ import java.util.Properties;
  * @Description 复用代码
  * @createTime 2021年01月25日 13:35:00
  */
-public  abstract class Dbutil {
+public  abstract class Dbutil{
     //定义一个日志记录器
     private static Logger logger = Logger.getLogger(Dbutil.class.getName());
     private Dbutil(){
@@ -112,5 +116,62 @@ public  abstract class Dbutil {
             Dbutil.closeAll(rs,pstmt,coon);  //注意,这里可以直接填pmt,因为在closeAll里的传参是父类Statement
         }
         return n;
+    }
+
+    public  static<T> List<T> executeQuery(String sql,Object[] params,String classname){
+        Connection coon = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        ArrayList<T> list = new ArrayList<T>();
+        try {
+            coon = Dbutil.getConnection();
+            pstmt = coon.prepareStatement(sql);
+            for (int i = 0; i < params.length; i++) {
+                pstmt.setObject(i+1,params[i]);
+            }
+            rs = pstmt.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int count = rsmd.getColumnCount();
+            while (rs.next()){
+                //Employee emp = new Employee();
+                Class<?> clazz = Class.forName(classname);
+                T entity = (T) clazz.newInstance();
+                for (int i = 0; i < count; i++) {
+                    //获取当前列的名称
+                    String columnName = rsmd.getColumnName(i + 1);
+
+                    //获取当前列的值  int empno = rs.getInt("empno"); //不区分大小写
+                    Object value = rs.getObject(columnName);
+
+                    //当前列的值赋值给entity 例如： emp.setEmpno(empno);
+                    //这里观察发现entity包下的对象的赋值方法都是get+首字母大写+其余小写，所以这里要用到字符串拼接
+                    //调用set方法时有时候是setint,有时候是setstring,setdate,所以要用metedate获取表结构的方式
+                    //调用set方法的输入参数均只有一个，即根据列名找到的具体值value
+                    String methodName = "set"+columnName.substring(0,1).toUpperCase()+
+                            columnName.substring(1).toLowerCase();
+                    Class<?> parameterType = Class.forName(rsmd.getColumnClassName(i + 1));
+                    //参照之前练习的反射调用方法 Method m2 = clazz.getMethod（"add",int.class,String.class）
+                    Method method = clazz.getMethod(methodName, parameterType);
+                    method.invoke(entity, value);// = emp.setEmpno(empno);
+                }
+
+                list.add(entity);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } finally {
+            Dbutil.closeAll(rs,pstmt,coon);
+        }
+        return list;
     }
 }

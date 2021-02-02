@@ -10,14 +10,14 @@ import java.util.Date;
  * @createTime 2021年01月25日 13:37:00
  */
 public class Employee {
-    private int empno;
+    private Integer empno;
     private  String ename;
     private  String job;
-    private  int mgr;
+    private  Integer mgr;
     private Date hiredate;
-    private double sal;
-    private double comm ;
-    private int deptno;
+    private Double sal;
+    private Double comm ;
+    private Integer deptno;
 
     public Employee() {
     }
@@ -50,13 +50,11 @@ public class Employee {
         this.deptno = deptno;
     }
 
-
-
-    public int getEmpno() {
+    public Integer getEmpno() {
         return empno;
     }
 
-    public void setEmpno(int empno) {
+    public void setEmpno(Integer empno) {
         this.empno = empno;
     }
 
@@ -76,11 +74,11 @@ public class Employee {
         this.job = job;
     }
 
-    public int getMgr() {
+    public Integer getMgr() {
         return mgr;
     }
 
-    public void setMgr(int mgr) {
+    public void setMgr(Integer mgr) {
         this.mgr = mgr;
     }
 
@@ -88,31 +86,31 @@ public class Employee {
         return hiredate;
     }
 
-    public void setHiredate(Date hiredate) {
+    public void setHiredate(java.sql.Date hiredate) {
         this.hiredate = hiredate;
     }
 
-    public double getSal() {
+    public Double getSal() {
         return sal;
     }
 
-    public void setSal(double sal) {
+    public void setSal(Double sal) {
         this.sal = sal;
     }
 
-    public double getComm() {
+    public Double getComm() {
         return comm;
     }
 
-    public void setComm(double comm) {
+    public void setComm(Double comm) {
         this.comm = comm;
     }
 
-    public int getDeptno() {
+    public Integer getDeptno() {
         return deptno;
     }
 
-    public void setDeptno(int deptno) {
+    public void setDeptno(Integer deptno) {
         this.deptno = deptno;
     }
 

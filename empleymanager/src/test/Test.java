@@ -2,6 +2,7 @@ package test;
 
 import dao.Employeedao;
 import dao.impl.EmployeedaoImpl;
+import dao.impl.EmployeedaoImpl2;
 import entity.Employee;
 
 import java.text.DateFormat;
@@ -67,7 +68,7 @@ public class Test {
 
     public static  void findAll(){
         //调用后台，在前台输出
-        Employeedao employeedao = new EmployeedaoImpl(); //多态
+        Employeedao employeedao = new EmployeedaoImpl2(); //多态
         List<Employee> emlist = employeedao.finaAll();
         System.out.println("编号\t姓名\t职位\t上级编号\t入职日期\t薪水\t奖金\t所属 部门编号");
         for (Employee emp : emlist) {
@@ -82,7 +83,7 @@ public class Test {
         System.out.println("请输入员工编号");
         int empno = sc.nextInt();
         //调用后台，在前台输出
-        Employeedao employeedao = new EmployeedaoImpl(); //多态
+        Employeedao employeedao = new EmployeedaoImpl2(); //多态
         Employee emp = employeedao.findById(empno);
         if (emp == null){
             System.out.println("查无此人");
