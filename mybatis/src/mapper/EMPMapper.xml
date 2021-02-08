@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.EMPMapper">
+    <select id="selectAll" resultType="employee">
+    select  * from emp;
+    </select>
+
+    <select id="selectOne" resultType="employee">
+        select * from emp where empno = 7369;
+    </select>
+
+    <select id="selectMap" resultType="map">
+        select * from emp;
+    </select>
+
+    <select id="selectbyID" resultType="employee" parameterType="int">
+        select * from emp where empno = #{param1};
+    </select>
+
+    <select id="selectby2Param" resultType="employee" parameterType="employee" >
+        select * from emp where mgr = #{mgr} and job =#{job} ;
+    </select>
+
+    <select id="selectBy2ParamInMap" resultType="employee" parameterType="map" >
+        select * from emp where mgr = #{a} and job =#{b} ;
+    </select>
+
+    <insert id="insert" parameterType="employee">
+        insert into emp values (DEFAULT,#{ename},#{job},#{mgr},#{hiredate},#{sal},#{comm},#{deptno});
+    </insert>
+
+    <update id="update" parameterType="map">
+        update emp set ename = #{ename} where empno = #{empno};
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from emp where id = #{param1}
+    </delete>
+
+
+</mapper>

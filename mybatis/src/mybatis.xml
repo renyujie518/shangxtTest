@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--读取属性文件 -->
+    <properties resource="jdbc.properties">
+    </properties>
+
+    <!-- 指定日志-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!--给实体类取别名 -->
+    <typeAliases>
+        <typeAlias type="entity.Employee" alias="employee"></typeAlias>
+        <typeAlias type="entity.Department" alias="department"></typeAlias>
+    </typeAliases>
+
+    <!-- MySQL数据库连接-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            
+            <!-- 连接池方式连接-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="12345678"/>-->
+<!--            </dataSource>-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${dirver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${user}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+
+        </environment>
+    </environments>
+
+
+    <!--进行mapper的扫描 书写sql语句所在的目录-->
+    <mappers>
+        <mapper resource="mapper/EMPMapper.xml"></mapper>
+<!--        <mapper resource="mapper/EmpADUS.xml"></mapper>-->
+        <!--packeg会先扫描包下的所有接口，再去找与接口名相同的xml进行扫描 ，所以上面的-mapper/EmpADUS.xml"可以省略-->
+        <package name="mapper"></package>
+    </mappers>
+
+</configuration>

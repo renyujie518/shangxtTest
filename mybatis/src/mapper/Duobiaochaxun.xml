@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Duobiaochaxun">
+    <sql id="sqle*">
+        empno,ename,job,mgr,hiredate,sal,comm,deptno
+    </sql>
+    <sql id="sqld*">
+        deptno,dname,loc
+    </sql>
+
+    <select id="selectAllDept" resultType="department">
+        select <include refid="sqld*"></include> from dept;
+    </select>
+
+    <select id="selectOneDept" resultType="department">
+        select <include refid="sqld*"></include> from dept where deptno = #{param1}
+    </select>
+
+    <select id="selectAllEmp" resultType="employee">
+        select <include refid="sqle*"></include> from emp;
+    </select>
+
+    <select id="selectOneEmp" resultType="employee">
+        select <include refid="sqle*"></include> from emp where empno = #{param1}
+    </select>
+    <select id="selectoneEmpByDeptno" resultType="employee">
+        select <include refid="sqle*"></include> from emp where deptno = #{param1}
+    </select>
+
+    <select id="selectAllDeptFromEmp" resultMap="rmAllEmp">
+        select <include refid="sqle*"></include> from emp;
+    </select>
+
+    <select id="selectAllEmpFromDept" resultMap="rmAllDept">
+        select <include refid="sqld*"></include> from dept;
+    </select>
+
+    <resultMap id="rmAllEmp" type="employee">
+        <!--数据库列名对应到实体的属性名。如果数据库的列名和实体的属性名一致id和result标签可以省略（公共字段最好别省）association 针对实体类中的对象变量dept-->
+<!--        <id column="empno" property="empno"></id>-->
+<!--        <result column="ename" property="ename"></result>-->
+<!--        <result column="job" property="job"></result>-->
+<!--        <result column="mgr" property="mgr"></result>-->
+<!--        <result column="hiredate" property="hiredate"></result>-->
+<!--        <result column="sal" property="sal"></result>-->
+<!--        <result column="com" property="com"></result>-->
+        <result column="deptno" property="deptno"></result>
+        <!-- property是对象用association select:选用方法 column:把上面的参数传进来 JavaType:执行select后的方法返回的实体对象类型 property:相当于 dept = employee.setDept(javatype),把返回的结果赋值到实体对象的哪个属性-->
+        <association select="mapper.Duobiaochaxun.selectOneDept" column="deptno" javaType="department" property="dept"></association>
+    </resultMap>
+    
+    <resultMap id="rmAllDept" type="department">
+        <id column="deptno" property="deptno"></id>
+        <result column="dename" property="dename"></result>
+        <result column="log" property="log"></result>
+        <!-- property是对象用collection select:调用 column:传参 ofType：集合的泛型 property:返回值赋值给属性-->
+        <collection select="mapper.Duobiaochaxun.selectoneEmpByDeptno" column="deptno" ofType="employee" property="emplist"></collection>
+    </resultMap>
+
+    <select id="selectEandD" resultMap="EandD">
+        select * from emp e join dept d on e.deptno = d.deptno;
+    </select>
+
+    <select id="selectDandE" resultMap="DandE">
+        select * from dept d join emp e on d.deptno = e.deptno;
+    </select>
+
+    <resultMap id="EandD" type="employee">
+        <id column="empno" property="empno"></id>
+        <result column="ename" property="ename"></result>
+        <result column="deptno" property="deptno"></result>
+        <association property="dept" javaType="department">
+            <id column="deptno" property="deptno"></id>
+            <result column="dname" property="dname"></result>
+        </association>
+    </resultMap>
+
+    <resultMap id="DandE" type="department">
+        <id column="deptno" property="deptno"></id>
+        <result column="dname" property="dname"></result>
+
+        <collection property="emplist" ofType="employee">
+            <id column="empno" property="empno"></id>
+            <result column="ename" property="ename"></result>
+            <result column="deptno" property="deptno"></result>
+        </collection>
+    </resultMap>
+
+</mapper>
