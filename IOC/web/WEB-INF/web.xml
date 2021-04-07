@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+<!--      配置全局参数：记录Sprin的配置文件applicationcontext.xml 这样做是假如有100个servlet,每个里面都要写applicationcontext
+那改或者替换的时候很方便-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationcontext.xml</param-value>
+    </context-param>
+<!--    配置监听器 在监听器里完成对sevletcontext对象完成在web.xml的全局参数的读取然后放作用域里，不管哪个servlet先启动，
+这个sevletcontext先创建好-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+</web-app>

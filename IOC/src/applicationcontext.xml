@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--  配置资源对象-->
+<!--    <bean id="myService" class="service.myserviceImpl"> </bean>-->
+    <bean id="myService" class="service.myserviceImpl2"> </bean>
+<!--    IOC通过无参构造器-->
+    <bean id="stu1" class="pojo.Student"/>
+    <!--    IOC通过有参构造器 一个constructor-arg代表一个参数 index代表形参角标 name形参名 type 类型的全限定路径 value 初始化的值-->
+    <bean id="stu2" class="pojo.Student">
+        <constructor-arg index="0" name="sid" type="java.lang.Integer" value="1"/>
+        <constructor-arg index="1" name="sname" type="java.lang.String" value="张三"/>
+        <constructor-arg index="2" name="fav" type="java.lang.String" value="吃"/>
+    </bean>
+<!--    属性注入 property代表调用 一个set方法 -->
+    <bean id="stu3" class="pojo.Student">
+        <property name="sid" value="2"/>
+        <property name="sname" value="李四"/>
+        <property name="fav" value="睡"/>
+    </bean>
+<!--    通过工厂模式 Spring容器创建工厂，然后自动调用方法创建对象然后放在容器里-->
+    <bean id="factory" class="pojo.StudenntFactory"/>
+    <bean id="stu4" factory-bean="factory" factory-method="newInstance"/>
+<!--    DI依赖注入 学生依赖老师 所以要先创建学生bean再创建老师bean 再属性依赖注入-->
+    <bean id="stu5" class="pojo.StudentDI">
+        <constructor-arg index="0" type="java.lang.Integer" name="sid" value="1"/>
+        <constructor-arg index="1" type="java.lang.String" name="sname" value="张三"/>
+        <constructor-arg index="2" type="java.lang.String" name="fav" value="唱歌"/>
+        <constructor-arg index="3" type="pojo.Teacher" name="teacher" ref="tea"/>
+
+    </bean>
+    <bean id="tea" class="pojo.Teacher">
+        <property name="tid" value="1"/>
+        <property name="tname" value="老张"/>
+    </bean>
+<!--    单例转多例 默认单例 这样在容器构建的时候不会创建对象 而是在使用的时候差创建-->
+    <bean id="tea2" class="pojo.Teacher" scope="prototype">
+    </bean>
+
+<!--    以下是SpringIOC整合mybatis案例的bean 创建mapper层的实例化对象-->
+<!--    创建数据源的bean-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/mydb"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="12345678"></property>
+    </bean>
+<!--    创建sqlSessionFactory的bean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+<!--    配置mapper扫描bean-->
+    <bean id="mapper" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" ></property>
+        <property name="basePackage" value="mapper"></property>
+    </bean>
+
+
+<!--     将 service业务层对象配置为bean对象-->
+    <bean id="us" class="service.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"></property>
+    </bean>
+
+
+</beans>

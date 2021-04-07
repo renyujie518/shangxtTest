@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+<!--    加载属性配置文件-->
+    <context:property-placeholder location="classpath:db.properties"/>
+<!--    配置数据源bean-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<!--        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--        <property name="url" value="jdbc:mysql://localhost:3306/mydb"/>-->
+<!--        <property name="username" value="root"/>-->
+<!--        <property name="password" value="12345678"/>-->
+        <property name="driverClassName" value="${mysql.driver}"/>
+        <property name="url" value="${mysql.url}"/>
+        <property name="username" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+     </bean>
+<!--    配制工厂bean-->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+<!--    配制mapper扫描bean-->
+    <bean id="mapper" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="factory"/>
+        <property name="basePackage" value="mapper"/>
+    </bean>
+<!--    配置业务层bead-->
+<!--    用户登录-->
+    <bean id="us" class="service.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+<!--    用户校验-->
+    <bean id="checkAccount" class="service.CheckAccountServiceImpl">
+        <property name="checkAccountMapper" ref="checkAccountMapper"/>
+    </bean>
+<!--    AOP功能扩展 配置通知bean-->
+    <bean id="before" class="advice.before2Log"/>
+    <bean id="after" class="advice.after2Log"/>
+<!--    配置组装规则-->
+    <aop:config>
+        <aop:pointcut id="mp" expression="execution(* service.UserServiceImpl.userLoginService(String,String))"/>
+        <aop:advisor advice-ref="before" pointcut-ref="mp"></aop:advisor>
+        <aop:advisor advice-ref="after" pointcut-ref="mp"></aop:advisor>
+     </aop:config>
+
+<!--    TX的事务管理-->
+    <!--    配置事务管理bean-->
+    <bean id="TransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- 配置事务管理方法   -->
+    <tx:advice id="advice" transaction-manager="TransactionManager">
+        <tx:attributes>
+            <!-- 因为在  execution(* service.*.*(..))的时候搞得范围太大，这时候做限定 只有方法是在"增删改查"的时候加TX的限定 -->
+            <tx:method name="sel*" read-only="true"/>
+            <tx:method name="ins*"/>
+            <tx:method name="up*"/>
+            <tx:method name="del*"/>
+            <tx:method name="transfer*"/>
+            <!--这里加 transfer*的原因是在银行转账的案例中使用的是transferInfoService涉及到事务安全的           -->
+        </tx:attributes>
+    </tx:advice>
+    <!-- 配置事务管理切面   -->
+    <aop:config>
+    <!--  声明切点      -->
+        <aop:pointcut id="transaction" expression="execution(* service.*.*(..))"/>
+    <!--  增加事务通知-->
+        <aop:advisor advice-ref="advice" pointcut-ref="transaction"></aop:advisor>
+    </aop:config>
+</beans>
